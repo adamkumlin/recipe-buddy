@@ -1,0 +1,70 @@
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.RecipeList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 100px 20px;
+}
+
+.RecipeList ul {
+  list-style-position: inside;
+  text-align: left;
+}
+
+.RecipeResult {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  cursor: pointer;
+}
+
+.RecipeResult img {
+  width: 200px;
+  height: 200px;
+  display: block;
+  z-index: -1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.RecipeResult h2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  color: black; 
+  display: block;
+  z-index: 2;
+}
+
+.RecipeResult .backgroundOverlay {
+  background-color: rgba(255, 255, 255, 0.274);
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.RecipeResult .time {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 10;
+  color: black; 
+  display: block;
+  z-index: 2;
+}
