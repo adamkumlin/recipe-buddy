@@ -4,7 +4,9 @@ type RecipeListProps = {
     recipes: Array<any>;
 }
 
-const RecipeList: React.FC<RecipeListProps> = ({ recipes }) => {
+type ActiveStatus = "block" | "none";
+
+const RecipeList: React.FC<RecipeListProps> = ({ recipes}) => {
 
     const formatTime = (time: number) => {
 
@@ -19,11 +21,19 @@ const RecipeList: React.FC<RecipeListProps> = ({ recipes }) => {
         return formattedTime;
     }
 
+    const toggleActive = (activeStatus: ActiveStatus) => {
+        if (activeStatus == "block") {
+            activeStatus = "none";
+        } else {
+            activeStatus = "block";
+        }
+    }
+
     return (
         <div className='RecipeList'>
             {recipes != null ?
                 recipes.map((recipe, index) => (
-                    <RecipeResult key={index} recipe={recipe} title={recipe.recipe.label} image={recipe.recipe.image} time={recipe.recipe.totalTime != 0 ? formatTime(recipe.recipe.totalTime) : null}/>
+                    <RecipeResult key={index} recipe={recipe} updateActiveStatus={toggleActive} title={recipe.recipe.label} image={recipe.recipe.image} time={recipe.recipe.totalTime != 0 ? formatTime(recipe.recipe.totalTime) : null}/>
                 )) : <p>Loading...</p>}
         </div>
     )

@@ -3,12 +3,15 @@ type RecipeProps = {
     content: string[];
     image: string;
     time: string | null;
+    activeStatus: ActiveStatus;
 }
 
-const Recipe: React.FC<RecipeProps> = ({ title, content, image, time }) => {
+type ActiveStatus = "block" | "none";
+
+const Recipe: React.FC<RecipeProps> = ({ title, content, image, time, activeStatus }) => {
 
     return (
-        <div className='Recipe'>
+        <div className='Recipe' style={{display: activeStatus}}>
             <h2>{title}</h2>
             <img src={image} alt={title}/>
             <p className="time">{time}</p>
