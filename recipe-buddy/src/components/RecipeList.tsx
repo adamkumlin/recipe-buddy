@@ -1,15 +1,23 @@
+import { useState } from "react";
 import RecipeResult from "./RecipeResult"
+import RecipeComponent from "./Recipe";
 
 type RecipeListProps = {
     recipes: Array<any>;
 }
 
-type ActiveStatus = "block" | "none";
+type Recipe = {
+    title: string;
+    content: string[];
+    image: string;
+    time: string | null;
+}
 
 const RecipeList: React.FC<RecipeListProps> = ({ recipes}) => {
 
-    const formatTime = (time: number) => {
+    const [activeRecipe, setActiveRecipe] = useState<Recipe | null>(null);
 
+    const formatTime = (time: number) => {
         let formattedTime: string = "";
 
         if (time >= 60) {
@@ -21,20 +29,14 @@ const RecipeList: React.FC<RecipeListProps> = ({ recipes}) => {
         return formattedTime;
     }
 
-    const toggleActive = (activeStatus: ActiveStatus) => {
-        if (activeStatus == "block") {
-            activeStatus = "none";
-        } else {
-            activeStatus = "block";
-        }
-    }
-
     return (
         <div className='RecipeList'>
-            {recipes != null ?
+            {recipes != null && activeRecipe === null ?
                 recipes.map((recipe, index) => (
-                    <RecipeResult key={index} recipe={recipe} updateActiveStatus={toggleActive} title={recipe.recipe.label} image={recipe.recipe.image} time={recipe.recipe.totalTime != 0 ? formatTime(recipe.recipe.totalTime) : null}/>
-                )) : <p>Loading...</p>}
+                    <RecipeResult key={index} setActiveRecipe={setActiveRecipe} title={recipe.recipe.label} content={recipe.recipe.ingredientLines} image={recipe.recipe.image} time={recipe.recipe.totalTime != 0 ? formatTime(recipe.recipe.totalTime) : null}/>
+                )) : null}
+
+                {activeRecipe != null ? <RecipeComponent title={activeRecipe.title} content={activeRecipe.content} image={activeRecipe.image} time={activeRecipe.time} setActiveRecipe={setActiveRecipe}/> : null}
         </div>
     )
 }

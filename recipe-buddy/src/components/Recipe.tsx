@@ -3,15 +3,21 @@ type RecipeProps = {
     content: string[];
     image: string;
     time: string | null;
-    activeStatus: ActiveStatus;
+    setActiveRecipe: React.Dispatch<React.SetStateAction<Recipe | null>>;
 }
 
-type ActiveStatus = "block" | "none";
+type Recipe = {
+    title: string;
+    content: string[];
+    image: string;
+    time: string | null;
+}
 
-const Recipe: React.FC<RecipeProps> = ({ title, content, image, time, activeStatus }) => {
+const Recipe: React.FC<RecipeProps> = ({ title, content, image, time, setActiveRecipe }) => {
 
     return (
-        <div className='Recipe' style={{display: activeStatus}}>
+        <div className='Recipe'>
+            <button onClick={() => setActiveRecipe(null)}>Back</button>
             <h2>{title}</h2>
             <img src={image} alt={title}/>
             <p className="time">{time}</p>

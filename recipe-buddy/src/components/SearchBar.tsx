@@ -11,8 +11,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ query, onChange, buttonLabel, onC
 
     return (
         <div className='SearchField'>
-                <input type="field" onChange={onChange} value={query} />
-                <button onClick={onClick}>{buttonLabel}</button>
+            <input type="text" onChange={onChange} value={query} placeholder="What are you hungry for?" />
+            <button onClick={onClick}>{buttonLabel}</button>
         </div>
     )
 }

@@ -1,17 +1,24 @@
 type RecipeResultProps = {
     title: string;
+    content: string[];
     image: string;
     time: string | null;
-    activeStatus: ActiveStatus;
-    updateActiveStatus: (activeStatus: ActiveStatus) => void;
+    setActiveRecipe: React.Dispatch<React.SetStateAction<Recipe | null>>;
 }
 
-type ActiveStatus = "block" | "none";
+type Recipe = {
+    title: string;
+    content: string[];
+    image: string;
+    time: string | null;
+}
 
-const RecipeResult: React.FC<RecipeResultProps> = ({ title, image, time, updateActiveStatus, activeStatus}) => {
+const RecipeResult: React.FC<RecipeResultProps> = ({ title, content, image, time, setActiveRecipe}) => {
+
+    const recipe: Recipe = {title, content, image, time};
 
     return (
-        <div className='RecipeResult' onClick={() => updateActiveStatus(activeStatus)}>
+        <div className='RecipeResult' onClick={() => setActiveRecipe(recipe)}>
             <div className="backgroundOverlay"/>
             <img src={image} alt={title}/>
             <h2>{title}</h2>

@@ -68,3 +68,8 @@
   display: block;
   z-index: 2;
 }
+
+.SearchField input {
+  width: 10rem;
+  height: 2rem;
+}

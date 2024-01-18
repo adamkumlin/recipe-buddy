@@ -8,6 +8,7 @@ const App: React.FC = () => {
 
   const [query, setQuery] = useState<string>("");
   const [data, setData] = useState<string[]>([]);
+  const [didSearch, setDidSearch] = useState<boolean>(false);
   const uri = `https://api.edamam.com/search?q=${query}&app_id=dc16785e&app_key=51a3c7a8caa9e47cc8cfeedfabd62559&diet=low-carb`;
 
   const search = () => {
@@ -15,13 +16,15 @@ const App: React.FC = () => {
     .then(response => response.json())
     .then(json => setData(json.hits))
     .catch(error => console.log(error));
+
+    setDidSearch(true);
   }
-  
+
   return (
     <div className="App">
       <Header title='Recipe Buddy' />
       <SearchBar query={query} onChange={(e) => setQuery(e.target.value)} buttonLabel='Search' onClick={() => search()} />
-      {query != "" ? <RecipeList recipes={data}/> : <p>No results :(</p>}
+      {if() <RecipeList recipes={data}/>}
     </div>
   )
 }
