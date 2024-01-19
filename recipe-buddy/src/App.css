@@ -1,6 +1,10 @@
-#root {
-  margin: 0 auto;
-  padding: 2rem;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.Header {
   text-align: center;
 }
 
@@ -69,7 +73,34 @@
   z-index: 2;
 }
 
+.SearchField {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
 .SearchField input {
   width: 10rem;
   height: 2rem;
+}
+
+.SearchField button {
+  margin-left: 0.5rem;
+}
+
+.Ingredients {
+  width: 30%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.Ingredients 
+
+.Recipe {
+  text-align: center;
+  width: 90%;
+}
+
+.Recipe button {
+  display: block;
+  margin-right: 1rem;
 }

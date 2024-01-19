@@ -1,6 +1,6 @@
 type RecipeResultProps = {
     title: string;
-    content: string[];
+    ingredients: string[];
     image: string;
     time: string | null;
     setActiveRecipe: React.Dispatch<React.SetStateAction<Recipe | null>>;
@@ -8,14 +8,14 @@ type RecipeResultProps = {
 
 type Recipe = {
     title: string;
-    content: string[];
+    ingredients: string[];
     image: string;
     time: string | null;
 }
 
-const RecipeResult: React.FC<RecipeResultProps> = ({ title, content, image, time, setActiveRecipe}) => {
+const RecipeResult: React.FC<RecipeResultProps> = ({ title, ingredients, image, time, setActiveRecipe}) => {
 
-    const recipe: Recipe = {title, content, image, time};
+    const recipe: Recipe = {title, ingredients, image, time};
 
     return (
         <div className='RecipeResult' onClick={() => setActiveRecipe(recipe)}>

@@ -8,7 +8,7 @@ type RecipeListProps = {
 
 type Recipe = {
     title: string;
-    content: string[];
+    ingredients: string[];
     image: string;
     time: string | null;
 }
@@ -33,10 +33,10 @@ const RecipeList: React.FC<RecipeListProps> = ({ recipes}) => {
         <div className='RecipeList'>
             {recipes != null && activeRecipe === null ?
                 recipes.map((recipe, index) => (
-                    <RecipeResult key={index} setActiveRecipe={setActiveRecipe} title={recipe.recipe.label} content={recipe.recipe.ingredientLines} image={recipe.recipe.image} time={recipe.recipe.totalTime != 0 ? formatTime(recipe.recipe.totalTime) : null}/>
+                    <RecipeResult key={index} setActiveRecipe={setActiveRecipe} title={recipe.recipe.label} ingredients={recipe.recipe.ingredientLines} image={recipe.recipe.image} time={recipe.recipe.totalTime != 0 ? formatTime(recipe.recipe.totalTime) : null}/>
                 )) : null}
 
-                {activeRecipe != null ? <RecipeComponent title={activeRecipe.title} content={activeRecipe.content} image={activeRecipe.image} time={activeRecipe.time} setActiveRecipe={setActiveRecipe}/> : null}
+                {activeRecipe != null ? <RecipeComponent title={activeRecipe.title} ingredients={activeRecipe.ingredients} image={activeRecipe.image} time={activeRecipe.time} setActiveRecipe={setActiveRecipe}/> : null}
         </div>
     )
 }

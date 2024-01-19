@@ -1,6 +1,8 @@
+import Ingredients from "./Ingredients";
+
 type RecipeProps = {
     title: string;
-    content: string[];
+    ingredients: string[];
     image: string;
     time: string | null;
     setActiveRecipe: React.Dispatch<React.SetStateAction<Recipe | null>>;
@@ -8,24 +10,21 @@ type RecipeProps = {
 
 type Recipe = {
     title: string;
-    content: string[];
+    ingredients: string[];
     image: string;
     time: string | null;
 }
 
-const Recipe: React.FC<RecipeProps> = ({ title, content, image, time, setActiveRecipe }) => {
+const Recipe: React.FC<RecipeProps> = ({ title, ingredients, image, time, setActiveRecipe }) => {
 
     return (
         <div className='Recipe'>
-            <button onClick={() => setActiveRecipe(null)}>Back</button>
             <h2>{title}</h2>
+            <button onClick={() => setActiveRecipe(null)}>Back</button>
             <img src={image} alt={title}/>
             <p className="time">{time}</p>
-            <ul>
-                {content.map((line, index) => (
-                    <li key={index}>{line}</li>
-                ))}
-            </ul>
+
+            <Ingredients ingredients={ingredients}/>
         </div>
     )
 }

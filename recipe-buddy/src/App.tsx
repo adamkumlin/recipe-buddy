@@ -24,7 +24,7 @@ const App: React.FC = () => {
     <div className="App">
       <Header title='Recipe Buddy' />
       <SearchBar query={query} onChange={(e) => setQuery(e.target.value)} buttonLabel='Search' onClick={() => search()} />
-      {if() <RecipeList recipes={data}/>}
+      <RecipeList recipes={data}/>
     </div>
   )
 }
