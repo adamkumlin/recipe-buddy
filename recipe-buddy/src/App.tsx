@@ -9,7 +9,7 @@ const App: React.FC = () => {
   const [query, setQuery] = useState<string>("");
   const [data, setData] = useState<string[]>([]);
   const [didSearch, setDidSearch] = useState<boolean>(false);
-  const uri = `https://api.edamam.com/search?q=${query}&app_id=dc16785e&app_key=51a3c7a8caa9e47cc8cfeedfabd62559&diet=low-carb`;
+  const uri = `https://api.edamam.com/search?q=${query}&to=30&app_id=dc16785e&app_key=51a3c7a8caa9e47cc8cfeedfabd62559&diet=low-carb`;
 
   const search = () => {
     fetch(uri)

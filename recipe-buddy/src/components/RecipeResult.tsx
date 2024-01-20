@@ -1,3 +1,5 @@
+import Time from "./Time";
+
 type RecipeResultProps = {
     title: string;
     ingredients: string[];
@@ -20,9 +22,9 @@ const RecipeResult: React.FC<RecipeResultProps> = ({ title, ingredients, image, 
     return (
         <div className='RecipeResult' onClick={() => setActiveRecipe(recipe)}>
             <div className="backgroundOverlay"/>
-            <img src={image} alt={title}/>
+            <img src={image} alt={title} className="image"/>
             <h2>{title}</h2>
-            <p className="time">{time}</p>
+            <Time minutes={time}/>
         </div>
     )
 }

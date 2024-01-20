@@ -11,7 +11,7 @@
 .RecipeList {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
   gap: 100px 20px;
 }
 
@@ -27,7 +27,7 @@
   cursor: pointer;
 }
 
-.RecipeResult img {
+.RecipeResult .image {
   width: 200px;
   height: 200px;
   display: block;
@@ -45,7 +45,7 @@
   left: 0;
   right: 0;
   top: 0;
-  color: black; 
+  color: black;
   display: block;
   z-index: 2;
 }
@@ -62,15 +62,19 @@
   z-index: 1;
 }
 
-.RecipeResult .time {
+.RecipeResult .Time {
   position: absolute;
-  bottom: 0;
   left: 0;
   right: 0;
-  top: 10;
-  color: black; 
-  display: block;
+  top: 20;
+  bottom: 0;
+  color: black;
   z-index: 2;
+  text-align: center;
+}
+
+.RecipeResult .Time img {
+  filter: initial;
 }
 
 .SearchField {
@@ -93,8 +97,6 @@
   margin-left: auto;
 }
 
-.Ingredients 
-
 .Recipe {
   text-align: center;
   width: 90%;
@@ -103,4 +105,15 @@
 .Recipe button {
   display: block;
   margin-right: 1rem;
+}
+
+.Time img {
+  width: 25px;
+  filter: invert(92%) sepia(93%) saturate(0%) hue-rotate(202deg) brightness(106%) contrast(106%);
+  display: inline;
+}
+
+.RecipeResult .Time span {
+  font-weight: bold;
+  font-size: 120%;
 }

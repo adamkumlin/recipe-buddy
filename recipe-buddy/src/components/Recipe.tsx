@@ -1,4 +1,5 @@
 import Ingredients from "./Ingredients";
+import Time from "./Time";
 
 type RecipeProps = {
     title: string;
@@ -22,7 +23,8 @@ const Recipe: React.FC<RecipeProps> = ({ title, ingredients, image, time, setAct
             <h2>{title}</h2>
             <button onClick={() => setActiveRecipe(null)}>Back</button>
             <img src={image} alt={title}/>
-            <p className="time">{time}</p>
+            
+            <Time minutes={time}/>
 
             <Ingredients ingredients={ingredients}/>
         </div>
