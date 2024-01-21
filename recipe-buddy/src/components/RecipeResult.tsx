@@ -1,10 +1,11 @@
 import Time from "./Time";
 import RecipeT from "../types/RecipeT";
+import QuantityT from "../types/QuantityT";
 
 interface RecipeResultProps {
   title: string;
   ingredients: string[];
-  instructions: string[];
+  ingredientQuantities: QuantityT[];
   image: string;
   time: string | null;
   setActiveRecipe: React.Dispatch<React.SetStateAction<RecipeT | null>>;
@@ -13,11 +14,12 @@ interface RecipeResultProps {
 const RecipeResult: React.FC<RecipeResultProps> = ({
   title,
   ingredients,
+  ingredientQuantities,
   image,
   time,
   setActiveRecipe,
 }) => {
-  const recipe: RecipeT = { title, ingredients, image, time };
+  const recipe: RecipeT = { title, ingredients, ingredientQuantities, image, time };
 
   return (
     <div className="RecipeResult" onClick={() => setActiveRecipe(recipe)}>

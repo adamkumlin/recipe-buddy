@@ -99,7 +99,7 @@
 
 .Recipe {
   text-align: center;
-  width: 90%;
+  width: 100%;
 }
 
 .Recipe button {
@@ -116,4 +116,11 @@
 .RecipeResult .Time span {
   font-weight: bold;
   font-size: 120%;
+}
+
+@media screen and (max-width: 1030px) {
+  .RecipeList {
+    flex-direction: column;
+    align-items: center;
+  }
 }
