@@ -1,32 +1,32 @@
 import Time from "./Time";
+import RecipeT from "../types/RecipeT";
 
-type RecipeResultProps = {
-    title: string;
-    ingredients: string[];
-    image: string;
-    time: string | null;
-    setActiveRecipe: React.Dispatch<React.SetStateAction<Recipe | null>>;
+interface RecipeResultProps {
+  title: string;
+  ingredients: string[];
+  instructions: string[];
+  image: string;
+  time: string | null;
+  setActiveRecipe: React.Dispatch<React.SetStateAction<RecipeT | null>>;
 }
 
-type Recipe = {
-    title: string;
-    ingredients: string[];
-    image: string;
-    time: string | null;
-}
+const RecipeResult: React.FC<RecipeResultProps> = ({
+  title,
+  ingredients,
+  image,
+  time,
+  setActiveRecipe,
+}) => {
+  const recipe: RecipeT = { title, ingredients, image, time };
 
-const RecipeResult: React.FC<RecipeResultProps> = ({ title, ingredients, image, time, setActiveRecipe}) => {
-
-    const recipe: Recipe = {title, ingredients, image, time};
-
-    return (
-        <div className='RecipeResult' onClick={() => setActiveRecipe(recipe)}>
-            <div className="backgroundOverlay"/>
-            <img src={image} alt={title} className="image"/>
-            <h2>{title}</h2>
-            <Time minutes={time}/>
-        </div>
-    )
-}
+  return (
+    <div className="RecipeResult" onClick={() => setActiveRecipe(recipe)}>
+      <div className="backgroundOverlay" />
+      <img src={image} alt={title} className="image" />
+      <h2>{title}</h2>
+      <Time minutes={time} />
+    </div>
+  );
+};
 
 export default RecipeResult;
