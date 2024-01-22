@@ -18,7 +18,6 @@ const RecipeList: React.FC<RecipeListProps> = ({ recipes }) => {
               key={index}
               setActiveRecipe={setActiveRecipe}
               title={recipe.recipe.label}
-              ingredients={recipe.recipe.ingredientLines}
               ingredientQuantities={recipe.recipe.ingredients}
               image={recipe.recipe.image}
               time={recipe.recipe.totalTime}
@@ -29,7 +28,6 @@ const RecipeList: React.FC<RecipeListProps> = ({ recipes }) => {
       {activeRecipe != null ? (
         <RecipeComponent
           title={activeRecipe.title}
-          ingredients={activeRecipe.ingredients}
           ingredientQuantities={activeRecipe.ingredientQuantities}
           image={activeRecipe.image}
           time={activeRecipe.time}

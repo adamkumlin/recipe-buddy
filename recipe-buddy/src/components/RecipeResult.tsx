@@ -4,7 +4,6 @@ import QuantityT from "../types/QuantityT";
 
 interface RecipeResultProps {
   title: string;
-  ingredients: string[];
   ingredientQuantities: QuantityT[];
   image: string;
   time: string | null;
@@ -13,13 +12,12 @@ interface RecipeResultProps {
 
 const RecipeResult: React.FC<RecipeResultProps> = ({
   title,
-  ingredients,
   ingredientQuantities,
   image,
   time,
   setActiveRecipe,
 }) => {
-  const recipe: RecipeT = { title, ingredients, ingredientQuantities, image, time };
+  const recipe: RecipeT = { title, ingredientQuantities, image, time };
 
   return (
     <div className="RecipeResult" onClick={() => setActiveRecipe(recipe)}>

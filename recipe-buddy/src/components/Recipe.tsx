@@ -5,7 +5,6 @@ import QuantityT from "../types/QuantityT";
 
 interface RecipeProps {
   title: string;
-  ingredients: string[];
   ingredientQuantities: QuantityT[];
   image: string;
   time: string | null;
@@ -14,7 +13,6 @@ interface RecipeProps {
 
 const Recipe: React.FC<RecipeProps> = ({
   title,
-  ingredients,
   ingredientQuantities,
   image,
   time,
@@ -28,7 +26,7 @@ const Recipe: React.FC<RecipeProps> = ({
 
       <Time minutes={time} />
 
-      <Ingredients ingredients={ingredients} quantities={ingredientQuantities}/>
+      <Ingredients quantities={ingredientQuantities} />
     </div>
   );
 };
