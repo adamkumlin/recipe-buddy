@@ -1,11 +1,11 @@
 import Ingredients from "./Ingredients";
 import Time from "./Time";
-import RecipeT from "../types/RecipeT";
-import QuantityT from "../types/QuantityT";
+import type RecipeT from "../types/Recipe";
+import type Quantity from "../types/Quantity";
 
 interface RecipeProps {
   title: string;
-  ingredientQuantities: QuantityT[];
+  ingredientQuantities: Quantity[];
   image: string;
   time: string | null;
   setActiveRecipe: React.Dispatch<React.SetStateAction<RecipeT | null>>;
@@ -26,7 +26,7 @@ const Recipe: React.FC<RecipeProps> = ({
 
       <Time minutes={time} />
 
-      <Ingredients quantities={ingredientQuantities} />
+      <Ingredients quantities={ingredientQuantities}/>
     </div>
   );
 };

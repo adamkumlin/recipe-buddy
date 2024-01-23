@@ -1,12 +1,12 @@
-import QuantityT from "./QuantityT";
+import Quantity from "./Quantity";
 
-type RecipeT = {
+type Recipe = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     recipe?: any;
     title: string;
-    ingredientQuantities: QuantityT[];
+    ingredientQuantities: Quantity[];
     image: string;
     time: string | null;
 };
 
-export default RecipeT;
+export default Recipe;

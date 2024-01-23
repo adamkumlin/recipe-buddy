@@ -1,13 +1,13 @@
 import Time from "./Time";
-import RecipeT from "../types/RecipeT";
-import QuantityT from "../types/QuantityT";
+import type Recipe from "../types/Recipe";
+import type Quantity from "../types/Quantity";
 
 interface RecipeResultProps {
   title: string;
-  ingredientQuantities: QuantityT[];
+  ingredientQuantities: Quantity[];
   image: string;
   time: string | null;
-  setActiveRecipe: React.Dispatch<React.SetStateAction<RecipeT | null>>;
+  setActiveRecipe: React.Dispatch<React.SetStateAction<Recipe | null>>;
 }
 
 const RecipeResult: React.FC<RecipeResultProps> = ({
@@ -17,7 +17,7 @@ const RecipeResult: React.FC<RecipeResultProps> = ({
   time,
   setActiveRecipe,
 }) => {
-  const recipe: RecipeT = { title, ingredientQuantities, image, time };
+  const recipe: Recipe = { title, ingredientQuantities, image, time };
 
   return (
     <div className="RecipeResult" onClick={() => setActiveRecipe(recipe)}>

@@ -1,4 +1,4 @@
-type QuantityT = {
+type Quantity = {
     food: string;
     foodCategory: string;
     foodId: string;
@@ -9,4 +9,4 @@ type QuantityT = {
     weight: number;
 }
 
-export default QuantityT;
+export default Quantity;

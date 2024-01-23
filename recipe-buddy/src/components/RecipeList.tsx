@@ -1,14 +1,14 @@
 import { useState } from "react";
 import RecipeResult from "./RecipeResult";
 import RecipeComponent from "./Recipe";
-import type RecipeT from "../types/RecipeT";
+import type Recipe from "../types/Recipe";
 
 interface RecipeListProps {
-  recipes: RecipeT[];
+  recipes: Recipe[];
 }
 
 const RecipeList: React.FC<RecipeListProps> = ({ recipes }) => {
-  const [activeRecipe, setActiveRecipe] = useState<RecipeT | null>(null);
+  const [activeRecipe, setActiveRecipe] = useState<Recipe | null>(null);
 
   return (
     <div className="RecipeList">
