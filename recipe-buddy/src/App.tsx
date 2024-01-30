@@ -1,10 +1,12 @@
 import Header from "./components/Header";
 import "./App.css";
 import SearchBar from "./components/SearchBar";
-import { useState } from "react";
+import { useState, createContext } from "react";
 import RecipeList from "./components/RecipeList";
 import type Recipe from "./types/Recipe";
 import type Unit from "./types/Unit";
+
+const UnitsContext = createContext<Unit | null>(null);
 
 const App: React.FC = () => {
   const [query, setQuery] = useState<string>("");
@@ -38,7 +40,9 @@ const App: React.FC = () => {
           search();
         }}
       />
-      <RecipeList recipes={data}/>
+      <UnitsContext.Provider value={units}>
+        <RecipeList recipes={data} />
+      </UnitsContext.Provider>
     </div>
   );
 };

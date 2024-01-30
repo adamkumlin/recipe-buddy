@@ -35,6 +35,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
           name="units"
           onClick={() => setUnits("metric")}
           value="metric"
+          defaultChecked
         />
       </label>
       <label>

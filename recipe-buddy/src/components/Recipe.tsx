@@ -25,7 +25,6 @@ const Recipe: React.FC<RecipeProps> = ({
       <img src={image} alt={title} />
 
       <Time minutes={time} />
-
       <Ingredients quantities={ingredientQuantities}/>
     </div>
   );

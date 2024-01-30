@@ -1,12 +1,14 @@
 import type Quantity from "../types/Quantity";
 import type Unit from "../types/Unit";
+import { useContext } from "react";
 
 interface IngredientsProps {
   quantities: Quantity[];
-  units: Unit;
 }
 
-const Ingredients: React.FC<IngredientsProps> = ({ quantities, units }) => {
+const Ingredients: React.FC<IngredientsProps> = ({ quantities }) => {
+
+  const units = useContext(UnitsContext);
   const ingredients: string[] = [];
 
   function convertUnits(quantites: Quantity[], units: Unit): Quantity[] {
