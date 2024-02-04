@@ -29,23 +29,11 @@ const SearchBar: React.FC<SearchBarProps> = ({
   return (
     <div className="SearchField">
       <label>
-        Metric
-        <input
-          type="radio"
-          name="units"
-          onClick={() => setUnits("metric")}
-          value="metric"
-          defaultChecked
-        />
-      </label>
-      <label>
-        Imperial
-        <input
-          type="radio"
-          name="units"
-          onClick={() => setUnits("imperial")}
-          value="imperial"
-        />
+        Units
+        <select defaultValue={"metric"} onChange={(e) => setUnits(e.target.value as Unit)}>
+          <option value={"metric"}>Metric</option>
+          <option value={"imperial"}>Imperial</option>
+        </select>
       </label>
       <label>
         Amount of results

@@ -1,12 +1,11 @@
 import Header from "./components/Header";
 import "./App.css";
 import SearchBar from "./components/SearchBar";
-import { useState, createContext } from "react";
+import { useState } from "react";
 import RecipeList from "./components/RecipeList";
 import type Recipe from "./types/Recipe";
+import UnitsContext from "./contexts/UnitsContext";
 import type Unit from "./types/Unit";
-
-const UnitsContext = createContext<Unit | null>(null);
 
 const App: React.FC = () => {
   const [query, setQuery] = useState<string>("");
