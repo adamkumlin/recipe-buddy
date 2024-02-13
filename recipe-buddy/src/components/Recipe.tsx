@@ -1,7 +1,6 @@
 import Ingredients from "./Ingredients";
 import Time from "./Time";
-import type RecipeT from "../types/Recipe";
-import type Quantity from "../types/Quantity";
+import type {Recipe as RecipeT, Quantity} from "../types/RecipeTypes";
 
 interface RecipeProps {
   title: string;

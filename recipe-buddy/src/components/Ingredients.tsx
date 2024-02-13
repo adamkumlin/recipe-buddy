@@ -1,6 +1,5 @@
 import UnitsContext from "../contexts/UnitsContext";
-import type Quantity from "../types/Quantity";
-import type Unit from "../types/Unit";
+import type { Unit, Quantity } from "../types/RecipeTypes";
 import { useContext, useEffect, useState } from "react";
 
 interface IngredientsProps {
@@ -12,10 +11,11 @@ const Ingredients: React.FC<IngredientsProps> = ({ quantities }) => {
   const [ingredients, setIngredients] = useState<string[]>([]);
 
   useEffect(() => {
-    const convertedQuantities = convertUnits(quantities, units);
+    setIngredients([]);
+    const convertedQuantities: Quantity[] = convertUnits(quantities, units);
     formatQuantities(convertedQuantities);
   }, []);
-  
+
   function convertUnits(quantites: Quantity[], units: Unit | null): Quantity[] {
     if (units === "metric") {
       for (let i = 0; i < quantities.length; i++) {
@@ -41,24 +41,24 @@ const Ingredients: React.FC<IngredientsProps> = ({ quantities }) => {
       }
     } else if (units === "imperial") {
       for (let i = 0; i < quantities.length; i++) {
-        if (quantities[i].measure === "cup") {
+        if (quantities[i].measure === "deciliter") {
           const newQuantity: number = Math.round(
-            2.366 * quantities[i].quantity
+            quantities[i].quantity / 2.366
           );
           quantities[i].quantity = newQuantity;
-          quantities[i].measure = "deciliter";
-        } else if (quantities[i].measure === "pound") {
+          quantities[i].measure = "cup";
+        } else if (quantities[i].measure === "gram" && quantites[i].quantity > 0.5) {
           const newQuantity: number = Math.round(
-            435.6 * quantities[i].quantity
+            quantities[i].quantity / 435.6
           );
           quantities[i].quantity = newQuantity;
-          quantities[i].measure = "gram";
-        } else if (quantities[i].measure === "ounce") {
+          quantities[i].measure = "pound";
+        } else if (quantities[i].measure === "ounce" && quantites[i].quantity <= 0.5) {
           const newQuantity: number = Math.round(
-            28.35 * quantities[i].quantity
+            quantities[i].quantity / 28.35
           );
           quantities[i].quantity = newQuantity;
-          quantities[i].measure = "gram";
+          quantities[i].measure = "ounce";
         }
       }
     }
@@ -67,6 +67,7 @@ const Ingredients: React.FC<IngredientsProps> = ({ quantities }) => {
 
   function formatQuantities(quantites: Quantity[]) {
     let ingredient: string = "";
+    const ingredientArr = [];
 
     for (let i = 0; i < quantites.length; i++) {
       if (quantities[i].food) {
@@ -76,7 +77,6 @@ const Ingredients: React.FC<IngredientsProps> = ({ quantities }) => {
         const restOfWord: string = quantities[i].food.slice(1);
         ingredient = firstLetter + restOfWord;
       }
-
       if (quantities[i].quantity > 0) {
         ingredient += " - " + quantities[i].quantity;
 
@@ -87,24 +87,24 @@ const Ingredients: React.FC<IngredientsProps> = ({ quantities }) => {
           ingredient +=
             " " +
             quantities[i].measure +
-            (quantities[i].quantity > 1 ? "s" : "");
+            (quantities[i].quantity != 1 ? "s" : "");
         }
-        setIngredients(current => [...current, ingredient])
       }
+      ingredientArr.push(ingredient);
     }
+    setIngredients(ingredientArr);
   }
 
   const startsOpen: boolean = ingredients.length < 13;
 
-  console.log(ingredients)
   return (
     <div className="Ingredients">
       <details open={startsOpen}>
         <summary>Ingredients</summary>
         <ul>
-          {ingredients.length > 0
-            ? ingredients.map((line, index) => <li key={index}>{line}</li>)
-            : null}
+          {ingredients.map((line, index) => (
+            <li key={index}>{line}</li>
+          ))}
         </ul>
       </details>
     </div>

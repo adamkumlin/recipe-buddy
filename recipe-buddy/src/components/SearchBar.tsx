@@ -27,14 +27,13 @@ const SearchBar: React.FC<SearchBarProps> = ({
   }
 
   return (
-    <div className="SearchField">
-      <label>
-        Units
-        <select defaultValue={"metric"} onChange={(e) => setUnits(e.target.value as Unit)}>
-          <option value={"metric"}>Metric</option>
-          <option value={"imperial"}>Imperial</option>
-        </select>
-      </label>
+    <div className="SearchBar">
+      <input
+        type="text"
+        onChange={(e) => setQuery(e.target.value)}
+        value={query}
+        placeholder="What are you hungry for?"
+      />
       <label>
         Amount of results
         <input
@@ -51,13 +50,16 @@ const SearchBar: React.FC<SearchBarProps> = ({
           onBlur={(e) => validateResultsAmount(parseInt(e.target.value))}
         />
       </label>
-      <input
-        type="text"
-        onChange={(e) => setQuery(e.target.value)}
-        value={query}
-        placeholder="What are you hungry for?"
-      />
-      <button onClick={onClick}>{buttonLabel}</button>
+      <label>
+        Units
+        <select
+          defaultValue={"metric"}
+          onChange={(e) => setUnits(e.target.value as Unit)}>
+          <option value={"metric"}>Metric</option>
+          <option value={"imperial"}>Imperial</option>
+        </select>
+      </label>
+      <input type="submit" onClick={onClick} value={buttonLabel} />
     </div>
   );
 };

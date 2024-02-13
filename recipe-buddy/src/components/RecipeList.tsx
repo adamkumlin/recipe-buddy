@@ -1,7 +1,7 @@
 import { useState } from "react";
 import RecipeResult from "./RecipeResult";
 import RecipeComponent from "./Recipe";
-import type Recipe from "../types/Recipe";
+import type { Recipe }  from "../types/Recipe";
 
 interface RecipeListProps {
   recipes: Recipe[];
